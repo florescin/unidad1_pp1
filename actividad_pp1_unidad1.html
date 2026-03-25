@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Actividad Grupal – PP1 Unidad 1 | ISDM</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,400&display=swap');
+
+  :root {
+    --rojo:    #7a1c2e;
+    --verde:   #1a5c5c;
+    --dorado:  #c8a84b;
+    --crema:   #f5f0e8;
+    --oscuro:  #1a1410;
+    --gris:    #6b6257;
+    --borde:   #d4c9b8;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Sans 3', Georgia, serif;
+    background: var(--crema);
+    color: var(--oscuro);
+    min-height: 100vh;
+  }
+
+  /* ─── ENCABEZADO ─── */
+  header {
+    background: var(--rojo);
+    color: white;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: 30%;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.08);
+  }
+
+  .header-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 36px 40px 28px;
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: start;
+    gap: 20px;
+  }
+
+  .header-badge {
+    display: inline-block;
+    background: var(--dorado);
+    color: var(--oscuro);
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 600;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 2px;
+    margin-bottom: 12px;
+  }
+
+  header h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.1rem;
+    font-weight: 900;
+    line-height: 1.15;
+    margin-bottom: 8px;
+  }
+
+  header .subtitle {
+    font-size: 0.95rem;
+    font-weight: 300;
+    opacity: 0.85;
+    line-height: 1.5;
+  }
+
+  .header-meta {
+    text-align: right;
+    font-size: 0.78rem;
+    opacity: 0.75;
+    line-height: 1.8;
+    white-space: nowrap;
+  }
+
+  /* ─── BANDA DE INSTRUCCIONES ─── */
+  .instrucciones-banda {
+    background: var(--verde);
+    color: white;
+    padding: 16px 40px;
+    max-width: 100%;
+  }
+
+  .instrucciones-banda .inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .instrucciones-banda .icono {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .instrucciones-banda p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  .instrucciones-banda strong {
+    font-weight: 600;
+  }
+
+  /* ─── CONTENIDO PRINCIPAL ─── */
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 40px 60px;
+  }
+
+  /* ─── CASO ─── */
+  .caso-box {
+    border-left: 5px solid var(--rojo);
+    background: white;
+    padding: 28px 32px;
+    margin-bottom: 36px;
+    border-radius: 0 4px 4px 0;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    position: relative;
+  }
+
+  .caso-box::before {
+    content: '📋 CASO';
+    position: absolute;
+    top: -12px; left: 28px;
+    background: var(--rojo);
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    padding: 4px 10px;
+    border-radius: 2px;
+  }
+
+  .caso-box p {
+    font-size: 0.96rem;
+    line-height: 1.75;
+    color: #2a2420;
+  }
+
+  .caso-box p + p { margin-top: 12px; }
+
+  .caso-box .highlight {
+    font-style: italic;
+    color: var(--rojo);
+    font-weight: 600;
+  }
+
+  /* ─── SECCIONES DE PREGUNTAS ─── */
+  .seccion {
+    margin-bottom: 36px;
+  }
+
+  .seccion-titulo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--borde);
+  }
+
+  .seccion-num {
+    background: var(--rojo);
+    color: white;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .seccion h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--rojo);
+    line-height: 1.3;
+  }
+
+  .seccion h2 span {
+    display: block;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gris);
+    margin-bottom: 2px;
+  }
+
+  /* ─── PREGUNTAS ─── */
+  .pregunta {
+    background: white;
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    padding: 20px 24px;
+    margin-bottom: 14px;
+    position: relative;
+  }
+
+  .pregunta-letra {
+    position: absolute;
+    top: 20px; left: -14px;
+    background: var(--dorado);
+    color: var(--oscuro);
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  }
+
+  .pregunta p {
+    font-size: 0.93rem;
+    line-height: 1.65;
+    color: #2a2420;
+    padding-left: 4px;
+  }
+
+  .pregunta p strong {
+    color: var(--rojo);
+  }
+
+  .respuesta-area {
+    margin-top: 14px;
+    background: var(--crema);
+    border: 1px dashed var(--borde);
+    border-radius: 4px;
+    padding: 10px 14px;
+    min-height: 80px;
+  }
+
+  .respuesta-area p {
+    font-size: 0.78rem;
+    color: var(--gris);
+    font-style: italic;
+  }
+
+  /* ─── TABLA ─── */
+  .tabla-wrapper {
+    overflow-x: auto;
+    margin-top: 14px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+  }
+
+  thead tr {
+    background: var(--rojo);
+    color: white;
+  }
+
+  thead th {
+    padding: 11px 14px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+  }
+
+  tbody tr:nth-child(even) { background: #faf7f2; }
+  tbody tr:nth-child(odd)  { background: white; }
+
+  tbody td {
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--borde);
+    color: var(--gris);
+    vertical-align: top;
+  }
+
+  tbody td:first-child {
+    font-weight: 600;
+    color: var(--oscuro);
+    width: 30%;
+  }
+
+  /* ─── OPCIONES MULTIPLE ─── */
+  .opciones {
+    margin-top: 12px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .opcion {
+    background: #faf7f2;
+    border: 1px solid var(--borde);
+    border-radius: 4px;
+    padding: 10px 14px;
+    font-size: 0.87rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    cursor: pointer;
+  }
+
+  .opcion-circulo {
+    width: 20px; height: 20px;
+    border: 2px solid var(--borde);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ─── PISTA ─── */
+  .pista {
+    background: #e8f4f0;
+    border-left: 4px solid var(--verde);
+    padding: 12px 16px;
+    border-radius: 0 4px 4px 0;
+    margin-top: 10px;
+  }
+
+  .pista p {
+    font-size: 0.83rem;
+    color: #1a4a4a;
+    line-height: 1.5;
+  }
+
+  .pista p::before {
+    content: '💡 ';
+  }
+
+  /* ─── PIE ─── */
+  .pie {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 2px solid var(--borde);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .pie-item {
+    padding: 18px;
+    background: white;
+    border-radius: 6px;
+    border: 1px solid var(--borde);
+  }
+
+  .pie-item .emoji { font-size: 1.6rem; margin-bottom: 8px; }
+
+  .pie-item p {
+    font-size: 0.82rem;
+    color: var(--gris);
+    line-height: 1.5;
+  }
+
+  .pie-item strong {
+    display: block;
+    font-size: 0.88rem;
+    color: var(--oscuro);
+    margin-bottom: 4px;
+    font-weight: 600;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 640px) {
+    .header-inner { grid-template-columns: 1fr; }
+    .header-meta  { text-align: left; }
+    main { padding: 28px 20px 50px; }
+    .instrucciones-banda { padding: 16px 20px; }
+    .opciones { grid-template-columns: 1fr; }
+    .pie { grid-template-columns: 1fr; }
+  }
+
+  @media print {
+    body { background: white; }
+    .respuesta-area { min-height: 100px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════ ENCABEZADO ═══════════════════════════════ -->
+<header>
+  <div class="header-inner">
+    <div>
+      <div class="header-badge">Práctica Profesional I · Unidad 1</div>
+      <h1>¿Qué hace realmente<br>un analista de sistemas?</h1>
+      <p class="subtitle">Actividad grupal de comprensión — Fundamentos del Desarrollo de Sistemas</p>
+    </div>
+    <div class="header-meta">
+      ISDM · Tecnicatura en<br>Análisis de Sistemas<br><br>
+      👥 Grupal (3–4 personas)<br>
+      ⏱ 25–30 minutos
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════ INSTRUCCIONES ═══════════════════════════════ -->
+<div class="instrucciones-banda">
+  <div class="inner">
+    <div class="icono">📌</div>
+    <p>
+      Lean el caso en grupo, discutan las respuestas y anótenlas en los espacios correspondientes.
+      <strong>No hay una única respuesta correcta</strong> — lo importante es que puedan justificar su posición
+      usando los conceptos trabajados en clase. Al finalizar, cada grupo comparte una conclusión.
+    </p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ CONTENIDO ═══════════════════════════════ -->
+<main>
+
+  <!-- CASO -->
+  <div class="caso-box">
+    <p>
+      El Instituto Superior Del Milagro (ISDM) tiene un problema con su proceso de <strong>inscripción a materias</strong>.
+      Cada cuatrimestre, los estudiantes deben acercarse personalmente a secretaría, completar un formulario en papel,
+      esperar que el personal lo cargue manualmente en una planilla de Excel y luego retirar su comprobante al día siguiente.
+    </p>
+    <p>
+      La secretaria académica, Valeria, carga entre 80 y 120 formularios por día durante el período de inscripción.
+      Con frecuencia comete errores al tipear, hay casos en que un mismo estudiante queda inscripto dos veces
+      en la misma materia, y otros en que se inscribe en materias para las que no cumple las correlativas.
+      Los estudiantes, por su parte, se quejan de las largas filas y la demora para obtener el comprobante.
+    </p>
+    <p class="highlight">
+      La institución sabe que algo tiene que cambiar, pero aún no tiene claro qué exactamente ni cómo abordarlo.
+    </p>
+  </div>
+
+  <!-- ─── BLOQUE 1 ─── -->
+  <div class="seccion">
+    <div class="seccion-titulo">
+      <div class="seccion-num">1</div>
+      <h2>
+        <span>Conceptos clave</span>
+        Sistema de Información vs. Sistema Informático
+      </h2>
+    </div>
+
+    <div class="pregunta">
+      <div class="pregunta-letra">A</div>
+      <p>El proceso de inscripción que se describe en el caso, ¿es un <strong>Sistema de Información</strong>
+         o un <strong>Sistema Informático</strong>? Justificá tu respuesta identificando al menos
+         dos elementos concretos del caso que respalden tu elección.</p>
+      <div class="respuesta-area"><p>Escribí aquí la respuesta grupal...</p></div>
+    </div>
+
+    <div class="pregunta">
+      <div class="pregunta-letra">B</div>
+      <p>Si el ISDM desarrollara una aplicación web para que los alumnos se inscriban online,
+         ¿qué parte de ese sistema sería el <strong>Sistema Informático</strong> y qué parte seguiría siendo
+         parte del <strong>Sistema de Información</strong>? Completá la tabla:</p>
+      <div class="tabla-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Elemento</th>
+              <th>Sistema de Información (SI)</th>
+              <th>Sistema Informático (SInf)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Reglamento de correlativas</td><td></td><td></td></tr>
+            <tr><td>Base de datos de alumnos</td><td></td><td></td></tr>
+            <tr><td>Secretaria que valida excepciones</td><td></td><td></td></tr>
+            <tr><td>Formulario de inscripción online</td><td></td><td></td></tr>
+            <tr><td>Comprobante impreso o digital</td><td></td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── BLOQUE 2 ─── -->
+  <div class="seccion">
+    <div class="seccion-titulo">
+      <div class="seccion-num">2</div>
+      <h2>
+        <span>Ingeniería de Software</span>
+        El ciclo de vida aplicado al caso
+      </h2>
+    </div>
+
+    <div class="pregunta">
+      <div class="pregunta-letra">A</div>
+      <p>Si el ISDM decidiera desarrollar un sistema digital para gestionar las inscripciones,
+         ¿en qué <strong>fase del ciclo de vida del software</strong> se encuentra actualmente?
+         Seleccioná la opción correcta y justificá brevemente:</p>
+      <div class="opciones">
+        <div class="opcion"><div class="opcion-circulo"></div><span>Fase 1: Definición — análisis de necesidades y requisitos</span></div>
+        <div class="opcion"><div class="opcion-circulo"></div><span>Fase 2: Desarrollo — codificación y prueba del sistema</span></div>
+        <div class="opcion"><div class="opcion-circulo"></div><span>Fase 3: Mantenimiento — corrección y mejoras</span></div>
+        <div class="opcion"><div class="opcion-circulo"></div><span>Ninguna — aún no comenzó el PDSW</span></div>
+      </div>
+      <div class="respuesta-area"><p>Justificación grupal...</p></div>
+    </div>
+
+    <div class="pregunta">
+      <div class="pregunta-letra">B</div>
+      <p>El texto dice que el <strong>mantenimiento no es un parche</strong>, sino una nueva etapa del ciclo.
+         Inventá un ejemplo concreto relacionado con el caso del ISDM en el que, luego de implementar
+         el sistema, se necesite una etapa de mantenimiento. Describí qué cambió y por qué.</p>
+      <div class="respuesta-area"><p>Ejemplo inventado por el grupo...</p></div>
+      <div class="pista">
+        <p>Pensá en cambios de normativa académica, nuevas modalidades de cursado o integración con otros sistemas del instituto.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── BLOQUE 3 ─── -->
+  <div class="seccion">
+    <div class="seccion-titulo">
+      <div class="seccion-num">3</div>
+      <h2>
+        <span>Rol profesional</span>
+        El analista de sistemas frente al caso
+      </h2>
+    </div>
+
+    <div class="pregunta">
+      <div class="pregunta-letra">A</div>
+      <p>Si ustedes fueran el equipo de <strong>analistas de sistemas</strong> contratados por el ISDM,
+         ¿cuáles serían sus <strong>tres primeras acciones concretas</strong> dentro de las funciones del analista?
+         Ordénenlas y explicá brevemente por qué en ese orden.</p>
+      <div class="tabla-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Orden</th>
+              <th>Acción concreta</th>
+              <th>¿Por qué primero esto?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1°</td><td></td><td></td></tr>
+            <tr><td>2°</td><td></td><td></td></tr>
+            <tr><td>3°</td><td></td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="pista">
+        <p>Recordá las funciones del analista: relevar información, analizar procesos, modelar sistemas, definir requerimientos, proponer soluciones y acompañar la implementación.</p>
+      </div>
+    </div>
+
+    <div class="pregunta">
+      <div class="pregunta-letra">B</div>
+      <p>El material afirma que el analista <strong>"no es solo un técnico: es un puente entre el problema
+         y la solución"</strong>. ¿Qué significa eso en el contexto concreto del caso?
+         ¿Entre quiénes actuaría como puente y para qué?</p>
+      <div class="respuesta-area"><p>Reflexión grupal...</p></div>
+    </div>
+  </div>
+
+  <!-- ─── BLOQUE 4: CIERRE ─── -->
+  <div class="seccion">
+    <div class="seccion-titulo">
+      <div class="seccion-num">4</div>
+      <h2>
+        <span>Síntesis final</span>
+        Una oración, una decisión
+      </h2>
+    </div>
+
+    <div class="pregunta">
+      <div class="pregunta-letra">★</div>
+      <p>En <strong>una sola oración</strong>, el grupo debe completar la siguiente frase y defenderla
+         oralmente ante la clase:</p>
+      <div class="respuesta-area" style="min-height:60px; padding:16px;">
+        <p style="font-style:normal; color: var(--oscuro); font-size: 0.95rem;">
+          <em>"El problema real del ISDM no es técnico, sino que es...</em> ________________
+          <em>, y por eso la primera tarea del analista debería ser...</em> ________________<em>."</em>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PIE -->
+  <div class="pie">
+    <div class="pie-item">
+      <div class="emoji">🗣️</div>
+      <strong>Puesta en común</strong>
+      <p>Cada grupo expone su respuesta a la pregunta ★ y el resto puede acordar o debatir.</p>
+    </div>
+    <div class="pie-item">
+      <div class="emoji">📖</div>
+      <strong>Conceptos trabajados</strong>
+      <p>SI vs SInf · Ciclo de vida del software · Rol del analista · Ingeniería de Software</p>
+    </div>
+    <div class="pie-item">
+      <div class="emoji">🎯</div>
+      <strong>Conexión con PP1</strong>
+      <p>Este mismo proceso será el punto de partida real cuando trabajen sobre los subsistemas del ISDM.</p>
+    </div>
+  </div>
+
+</main>
+
+</body>
+</html>
